@@ -10,15 +10,19 @@ public class _572zhs {
     }
 
     public boolean isSame(TreeNode a, TreeNode b) {
-        if (a == null && b == null) return true;
-        if (a == null || b == null) return false;
+        if (a == null && b == null)
+            return true;
+        if (a == null || b == null)
+            return false;
         return (a.val == b.val) && isSame(a.left, b.left) && isSame(a.right, b.right);
 
     }
 
     public boolean isSubtree(TreeNode s, TreeNode t) {
-        if (s == null && t == null) return true;
-        if (s == null || t == null) return false;
+        if (s == null && t == null)
+            return true;
+        if (s == null || t == null)
+            return false;
         return isSame(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
     }
 

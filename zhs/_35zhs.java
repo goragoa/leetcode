@@ -17,7 +17,6 @@ class Solution {
     }
 }
 **/
-
 public class _35zhs {
     public int search(int[] nubs, int begin, int end, int target) {
         if (begin == end) {
@@ -34,7 +33,7 @@ public class _35zhs {
             if (nubs[middle + 1] > target) {
                 return middle + 1;
             }
-            return search(nubs, middle+1, end, target);
+            return search(nubs, middle + 1, end, target);
         } else if (nubs[middle] > target) {
             if (nubs[middle - 1] < target) {
                 return middle;
@@ -45,10 +44,10 @@ public class _35zhs {
     }
 
     public int searchInsert(int[] numb, int target) {
-        if(target<numb[0]){
+        if (target < numb[0]) {
             return 0;
         }
-        if(target>numb[numb.length-1]){
+        if (target > numb[numb.length - 1]) {
             return numb.length;
         }
         return search(numb, 0, numb.length - 1, target);
@@ -56,6 +55,6 @@ public class _35zhs {
 
     public static void main(String[] args) {
         _35zhs test = new _35zhs();
-        System.out.println(test.searchInsert(new int[]{1, 3, 5, 6}, 2));
+        System.out.println(test.searchInsert(new int[] { 1, 3, 5, 6 }, 2));
     }
 }

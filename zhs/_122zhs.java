@@ -5,18 +5,16 @@ public class _122zhs {
             profit[i] = prices[i + 1] - prices[i];
         }
         int maxProfit = 0;
-        for (int p :
-                profit) {
-            if(p>0)
-                maxProfit+=p;
+        for (int p : profit) {
+            if (p > 0)
+                maxProfit += p;
         }
 
         return maxProfit;
     }
 
-
     public static void main(String[] args) {
         _122zhs t = new _122zhs();
-        System.out.println(t.maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
+        System.out.println(t.maxProfit(new int[] { 7, 1, 5, 3, 6, 4 }));
     }
 }
