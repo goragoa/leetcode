@@ -2,7 +2,7 @@ public class _32zhs {
     public int longestValidParentheses(String s) {
         int maxAns = 0;
         int[] dp = new int[s.length()];
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 1; i < s.length(); i++) {
             if (s.charAt(i) == ')') {
                 if (s.charAt(i - 1) == '(') {
                     dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
