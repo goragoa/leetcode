@@ -1,3 +1,5 @@
+package _60;
+
 public class _69zhs {
     public int mySqrt(int x, int a, int b) {
         int middle = (a + b) / 2;
