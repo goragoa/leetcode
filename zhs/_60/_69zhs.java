@@ -29,12 +29,12 @@ public class _69zhs {
     public int mySqrt2(int x) {
         if (x == 0)
             return x;
-        double C = x,x0=x;
+        double C = x, x0 = x;
         while (true) {
-            double xi = 0.5*(x0+C/x0);
-            if(Math.abs(x0-xi)<1e-7)
+            double xi = 0.5 * (x0 + C / x0);
+            if (Math.abs(x0 - xi) < 1e-7)
                 break;
-            x0=xi;
+            x0 = xi;
         }
         return (int) x0;
     }
