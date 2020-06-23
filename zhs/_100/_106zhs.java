@@ -1,3 +1,5 @@
+package _100;
+
 import java.util.HashMap;
 
 public class _106zhs {
