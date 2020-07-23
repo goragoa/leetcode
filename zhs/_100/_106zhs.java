@@ -15,13 +15,13 @@ public class _106zhs {
 
     int[] p;
     int[] i;
-    int post_idx;
+    int postIdx;
     HashMap<Integer, Integer> map = new HashMap<>();
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         this.p = postorder;
         this.i = inorder;
-        post_idx = postorder.length - 1;
+        postIdx = postorder.length - 1;
         int idx = 0;
         for (Integer val : inorder) {
             map.put(val, idx++);
@@ -29,15 +29,16 @@ public class _106zhs {
         return helper(0, inorder.length - 1);
     }
 
-    public TreeNode helper(int in_left, int in_right) {
-        if (in_left > in_right)
+    public TreeNode helper(int inLeft, int inRight) {
+        if (inLeft > inRight) {
             return null;
-        int root_val = p[post_idx];
-        TreeNode root = new TreeNode(root_val);
-        int index = map.get(root_val);
-        post_idx--;
-        root.right = helper(index + 1, in_right);
-        root.left = helper(in_left, index - 1);
+        }
+        int rootVal = p[postIdx];
+        TreeNode root = new TreeNode(rootVal);
+        int index = map.get(rootVal);
+        postIdx--;
+        root.right = helper(index + 1, inRight);
+        root.left = helper(inLeft, index - 1);
         return root;
     }
 }
