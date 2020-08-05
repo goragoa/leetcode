@@ -4,10 +4,10 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.HashMap;
 
 /**
  * @author zhangshuo
@@ -15,24 +15,27 @@ import java.net.URL;
  * @date 8/5/2020 4:04 PM
  */
 public class GetPoint {
+    //jpg a300*200 b40*40
     public static void main(String[] args) throws IOException {
-        HttpURLConnection connection = null;
-        URL url = null;
-        try {
-            String myurl = "http://img3.duitang.com/uploads/item/201606/03/20160603120505_rwQJP.jpeg";
-            url = new URL(myurl);
-            connection = (HttpURLConnection) url.openConnection();
-            int code = connection.getResponseCode();
-
-            if (code == 200) {  //响应成功
-                BufferedImage image = ImageIO.read(connection.getInputStream()); //读取图片文件流
-                String path = "image.png";  //创建存储图片文件的路径
-                File file = new File(path);
-                ImageIO.write(image, "png", file);  //将图片写进创建的路径
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        BufferedImage oriImage = ImageIO.read(new FileInputStream("a.jpg"));
+        BufferedImage partImage = ImageIO.read(new FileInputStream("b.jpg"));
+        //https://www.pkulaw.com/VerificationCode/GetVerifiCodeResult
+        int[] bgarray = new int[]{18, 15, 0, 7, 10, 6, 1, 3, 11, 19, 14, 13, 12, 8, 4, 2, 5, 9, 17, 16};
+        HashMap<Integer, Integer> location = new HashMap<>();
+        for (int i = 0; i < bgarray.length; i++) {
+            location.put(bgarray[i], i);
         }
+        BufferedImage imageNew = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
+        for (int i = 0; i < bgarray.length; i++) {
+            int num = location.get(i);
+            BufferedImage tmp = oriImage.getSubimage(0, 0, 30, 100);
+            int[] imageArrays = new int[30 * 100];
+            tmp.getRGB(0, 0, 30, 100, imageArrays, 0, 30);
+            imageNew.setRGB(0, 0, tmp.getWidth(), tmp.getHeight(), imageArrays, 0, tmp.getWidth());
+            System.out.println(num);
+        }
+        ImageIO.write(imageNew, "jpg", new File("ImageNew.jpg"));
+
     }
 }
 
