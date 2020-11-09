@@ -7,13 +7,17 @@ import java.util.HashMap;
  */
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>(10);
+        HashMap<Integer, Integer> indexMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                return new int[]{map.get(target - nums[i]), i};
+            if (indexMap.containsKey(target - nums[i])) {
+                return new int[]{i, indexMap.get(target - nums[i])};
             }
-            map.put(nums[i], i);
+//            Because each input would have exactly one solution.
+            if (!indexMap.containsKey(nums[i])) {
+                indexMap.put(nums[i], i);
+            }
         }
+//        Invalid input.
         return new int[]{-1, -1};
     }
 }
