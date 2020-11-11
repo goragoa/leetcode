@@ -2,6 +2,9 @@ package utils;
 
 import java.util.Arrays;
 
+/**
+ * @author zhangshuo
+ */
 public class ListNode {
     public int val;
     public ListNode next;
