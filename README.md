@@ -1,3 +1,3 @@
 ```/<name>/main```  
-```/<name>/test```
+```/<name>/test```  
 ```/<name>/utils```
