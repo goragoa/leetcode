@@ -1,7 +1,7 @@
 package test.zero;
 
 import main.zero.AddTwoNumbers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import utils.ListNode;
 
 /**
